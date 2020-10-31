@@ -1,0 +1,12 @@
+{
+    "name": "licensing-system",
+    "description": "",
+    "require": {
+        "slim/slim": "~3.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Licensing\\": "src/"
+        }
+    }
+}
