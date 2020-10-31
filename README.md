@@ -2,7 +2,7 @@
 <div align="center">
   <strong> A Simple License System made in PHP</strong>
   
-  <a href="https://github.com/sim-swapper/pizza-delivery/wiki/Documentation"> API Documentation</a>
+  <a href=""> API Documentation</a>
 </div>
 <br />
 
