@@ -3,6 +3,8 @@
   <strong> A Simple License System made in PHP</strong>
   
   <a href=""> API Documentation</a>
+  
+  <a href="https://github.com/SKATEB0ARD/licensing-system-discord">Discord Bot</a>
 </div>
 <br />
 
