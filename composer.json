@@ -1,5 +1,5 @@
 {
-    "name": "licensing-system",
+    "name": "licensing/system",
     "description": "",
     "require": {
         "slim/slim": "~3.12"
