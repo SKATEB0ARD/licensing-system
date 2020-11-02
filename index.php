@@ -18,8 +18,11 @@ $app->group("/api", function() use($app) {
             $app->put("/{code}",        [new LicenseController(), "updateLicense"]);
             $app->delete("/{code}",     [new LicenseController(), "deleteLicense"]);
 
-            $app->get("/verify/{discord_id}", [new LicenseController(), "checkDiscord"]);
-            $app->put("/verify/{code}/{discord_id}", [new LicenseController(), "veirfyCode"]);
+            $app->put("/verify/{code}/{discord_id}",        [new LicenseController(), "veirfyCode"]);
+
+        
+            $app->get("/check/discord/{discord_id}",        [new LicenseController(), "checkDiscord"]);
+            $app->get("/check/hwid/{hwid}",                 [new LicenseController(), "checkHWID"]);
         });
     });
 });

@@ -127,12 +127,27 @@ class Rest {
     }
 
     public function updateLicense($license) : bool {
-        $query = $this->conn->prepare("UPDATE licenses SET hwid = :id, username = :name WHERE code = :code");
+        $query = $this->conn->prepare("UPDATE licenses SET hwid = :id WHERE code = :code");
         $query->bindParam(":id", $license->hwid);
-        $query->bindParam(":name", $license->username);
         $query->bindParam(":code", $license->code);
 
         return $query->execute();
+    }
+
+    public function isHWID($hwid) : bool {
+        $query = $this->conn->prepare("SELECT id FROM licenses WHERE hwid = :id");
+        $query->bindParam(":id", $hwid);
+        $query->execute();
+
+        return $query->rowCount() == 1;
+    }
+
+    public function getLicenseByHWID($hwid) : array {
+        $query = $this->conn->prepare("SELECT * FROM licenses WHERE hwid = :id");
+        $query->bindParam(":id", $hwid);
+        $query->execute();
+
+        return $query->fetch();
     }
 
     public function checkAccessToken($token) : bool {

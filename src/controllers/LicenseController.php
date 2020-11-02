@@ -19,7 +19,6 @@ class LicenseController {
         [
             "code"=>    $code,
             "hwid"=>    NULL,
-            "username"=>NULL,
             "stauts"=>  0,
             "discord_id" => NULL,
             "notes"=> []
@@ -41,7 +40,6 @@ class LicenseController {
         [
             "code"=>    $license["code"], 
             "hwid"=>    $license["hwid"], 
-            "username"=>$license["username"],
             "status"=>  $license["status"],
             "discord_id"=>$license["discord_id"],
             "notes"=>   $notes
@@ -74,7 +72,6 @@ class LicenseController {
         [
             "code"=>    $stored_license["code"], 
             "hwid"=>    $stored_license["hwid"], 
-            "username"=>$stored_license["username"],
             "status"=>  $stored_license["status"],
             "discord_id"=>$stored_license["discord_id"],
             "notes"=>   $notes
@@ -100,7 +97,6 @@ class LicenseController {
         [
             "code"=>    $license["code"], 
             "hwid"=>    $license["hwid"], 
-            "username"=>$license["username"],
             "status"=>  $license["status"],
             "discord_id"=>$license["discord_id"],
             "notes"=>   $notes
@@ -122,7 +118,6 @@ class LicenseController {
         [
             "code"=>    $license["code"], 
             "hwid"=>    $license["hwid"], 
-            "username"=>$license["username"],
             "status"=>  $license["status"],
             "discord_id"=>$license["discord_id"],
             "notes"=>   $notes
@@ -149,7 +144,26 @@ class LicenseController {
         [
             "code"=>    $license["code"], 
             "hwid"=>    $license["hwid"], 
-            "username"=>$license["username"],
+            "status"=>  $license["status"],
+            "discord_id"=>$license["discord_id"],
+            "notes"=>   $notes
+        ]);
+    }
+
+    public function checkHWID(Request $request, Response $response, $args = []) {
+        global $rest;
+        $hwid = $args["hwid"];
+
+        if(!$rest->isHWID($hwid)) {
+            $rest->respond(200, ["message"=>"User is not found"]);
+        }
+        $license = $rest->getLicenseByHWID($hwid);
+        $notes =   $rest->getNotes($license["code"]);
+
+        $rest->respond(200, 
+        [
+            "code"=>    $license["code"], 
+            "hwid"=>    $license["hwid"], 
             "status"=>  $license["status"],
             "discord_id"=>$license["discord_id"],
             "notes"=>   $notes
