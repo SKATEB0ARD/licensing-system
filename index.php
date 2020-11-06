@@ -5,10 +5,10 @@ use Licensing\Rest;
 use Slim\App;
 
 require "vendor/autoload.php";
+require_once "config.php";
 
 $app = new App;
-$rest = new Rest();
-
+$rest = new Rest($config["sql_host"], $config["database_name"], $config["database_username"], $config["database_password"]);
 
 $app->group("/api", function() use($app) {
     $app->group("/v1", function() use ($app) {
