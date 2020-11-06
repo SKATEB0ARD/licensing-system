@@ -19,4 +19,4 @@ composer install
 ```
 Once Installed install the ```licenses.sql``` file.
 
-Go into ```config/config.php``` and edit the config.
+Go into ```config.php``` and edit the config.
